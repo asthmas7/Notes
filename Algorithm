@@ -27,7 +27,7 @@
            MergeSort(A,mid+1,right)
 
           #合并子数组
-           Merge(A,left,right)
+           Merge(A,left,mid,right)
 
            return A[left,right]
          }
