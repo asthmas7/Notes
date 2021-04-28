@@ -73,7 +73,7 @@
          
          
          
-  #Python 代码（数组原始有序才可排序）
+  #Python 实现代码
 
 A = [9,8,7,6,5,4,3,2,1,0]
 print(A)
@@ -100,11 +100,10 @@ def Merge(AL,AR):                  #归并函数
             result.append(AR[j])    #否则，将右存储
             j=j+1
 
-    if i <= len(AL):                #当右数组添加完毕，将左数组剩余数据一并存贮至结果数组中
+    if i < len(AL):                #当右某一数组添加完毕，将左数组剩余数据存贮
         result += AL[i:]
     else:
         result += AR[j:]
     return result
 
 print(MergeSort(A))
-
