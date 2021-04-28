@@ -72,3 +72,39 @@
          
          
          
+         
+  #Python 代码（数组原始有序才可排序）
+
+A = [9,8,7,6,5,4,3,2,1,0]
+print(A)
+
+def MergeSort(A):                   #递归分解问题
+    if len(A)<=1 :                  #分解至组元
+        return A
+
+    mid = len(A)//2
+    AL=MergeSort(A[:mid])           #左数组
+    AR=MergeSort(A[mid:])           #右数组
+    return Merge(AL,AR)
+
+def Merge(AL,AR):                  #归并函数
+
+    i=0;j=0;k=0;
+    result = []                     #合并的结果将存至此数组返回
+
+    while i<len(AL) and j<len(AR):  #两指针分别计数
+        if AL[i]<= AR[j]:           #左小于右时
+            result.append (AL[i])   #将左存储在结果数组中（升序）
+            i=i+1                   #循环变量加1
+        else:
+            result.append(AR[j])    #否则，将右存储
+            j=j+1
+
+    if i <= len(AL):                #当右数组添加完毕，将左数组剩余数据一并存贮至结果数组中
+        result += AL[i:]
+    else:
+        result += AR[j:]
+    return result
+
+print(MergeSort(A))
+
