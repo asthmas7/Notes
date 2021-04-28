@@ -1,3 +1,74 @@
-#分而治之
+#分而治之：分析原问题 - 解决子问题 - 合并问题解
 
   #归并排序
+       #完整数组的切割
+       #局部有序（每个元素天然有序）
+       #两两合并
+       
+     #算法流程
+     
+        #1）：将数组A[1，n]排序问题分解为A[1,n/2]和A[n/2 + 1, n]的问题              分析原问题
+        #2）：递归解决子问题得到两个有序的数组                                      解决子问题
+        #3）：将两个有序数组自下而上合并                                           合并问题解
+        
+     #伪代码
+        
+        MergeSort(A,left,right){
+        
+          if (left > = right) 
+            then
+              return A[left,right]        #分割数组至仅有一个元素
+          end
+
+           mid = [(left+right)/2]
+
+          #子数组排序
+           MergeSort(A,left,mid)
+           MergeSort(A,mid+1,right)
+
+          #合并子数组
+           Merge(A,left,right)
+
+           return A[left,right]
+         }
+         #合并数组
+         Merge(A,left,mid,right){
+         
+          B[left,right] = A[left,right]       #初始化赋值
+          i = left, j = mid+1, k= 0
+          
+          while (i<= left,j<= right) do   
+            if B[i] < B[j] then
+              A[left+k] = B[i]
+              k++, i++
+            else
+              A[left+k] = B[j]
+              K++,j++
+              
+          if(i < mid) then                #一边走完，剩余元素全部补全
+            A[left+k,right] = B[i,mid]    #B[i,mid] 已有序
+          else
+            A[left+k,right] = B[j,right]
+            
+          return A[left,right]
+         
+     #时间复杂度分析
+        Merge() - 每个元素仅遍历一次 - -  O（n）
+        MergeSort（）
+                            O（1）              n=1
+              T(n) 问题规模 =         
+                            2T（n/2）+ O(n)     n>1
+         
+              
+              
+                      O(n)                   O(n)
+                 2T(n/2)  2T(n/2)      O(n/2)  O(n/2)       O(n)
+                                     4T(n/4)   4T(n/4)      O(n)            logN 层 
+                                            ……
+                                     O（1） O(1) ...         O(n)
+        
+        
+        故时间复杂度为O(n)*logn = O(nlogn)
+         
+         
+         
