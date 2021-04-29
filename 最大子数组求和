@@ -3,7 +3,46 @@
 #输入：给定一个数组X[1..n],对于任意一对数组下标为l，r（l<=r）的非空子数组，其和记为 S（l,r） = ∑X[i] ,(i=l ->r）
 #输出：Smax
            
-#枚举法           
+#枚举法           O(n3)
   #l=r时，共 Cn1=n种组合  l,r       
   #l<r时，共 Cn2种组合    l,r
 #枚举n+Cn2种l,r组合，求出l到r的子数组之和。
+
+#优化枚举             O(n2)
+  #S=S(l,r-1)+x[r]
+ 
+# 分而治之
+  #伪代码      O(nlogn)
+  #输入：数组X，数组下标low,high
+  #输出：最大子数组之和Smax
+    #if(low = high) 
+    #   return X[low]
+    
+    #else
+    #   mid = [low+high]/2
+    #   S1=MaxSubArray(X,low,mid)
+    #   S1=MaxSubArray(X,mid+1,high)
+    #   S3=CrossSubArray(X,low,mid,right)
+    #   Smax = max{S1,S2,S3}
+    #   return Smax
+    
+    
+      #合并
+      #O(n)
+           #CrossSubArray(X,low,mid,right){
+           #  Sleft = -MAX
+           #  Sum = 0
+           #  for(l = mid -> low){
+           #    Sum+=X[l]
+           #    Sleft = max[Sleft,Sum]
+           
+           #  Sright = -MAX
+           #  Sum = 0
+           #  for(r=mid+1 -> high){
+           #    Sum+=X[r]
+           #    Sright = max[Sright,Sum]
+           
+           #  S3 = Sleft+ Sright
+           #  return S3
+           
+ 
