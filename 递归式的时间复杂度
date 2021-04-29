@@ -1,0 +1,20 @@
+#递归多项式 时间复杂度分析
+  #1）：递归树法
+ 
+    #examples 1                                                              n
+      #   { T(n/4) + T(3n/4) + n    n>=4                                                                      
+      #T(n)                                                           T(n/4)/n/4   T(3n/4)/3n/4                 n
+      #   { 1                       n<4                           T(n/16)  T(3n/16)   T(3n/16)  T(9n/16)        n    
+                                                                                ……
+         #深度   log(4/3)n                                       1            ……             1               <=n (中间下降速度慢，不为1)
+         
+    #时间复杂度 T(n) <= O(nlog(4/3)n) = O(n(logn/log4/3))=O(nlogn) - -上届
+                                                                    
+    
+  #2）：数学归纳法
+  #3）：主定理法
+    #对于形如T(n) = aT(b/n) +n^k 的递归式
+      #        O(n^k)         k>logb^a
+      # T(n) = O((n^k )logn)  k=logb^a
+      #        O(n^logb^a)    k<logb^a
+              
