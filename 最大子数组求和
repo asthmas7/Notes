@@ -21,7 +21,7 @@
     #else
     #   mid = [low+high]/2
     #   S1=MaxSubArray(X,low,mid)
-    #   S1=MaxSubArray(X,mid+1,high)
+    #   S2=MaxSubArray(X,mid+1,high)
     #   S3=CrossSubArray(X,low,mid,right)
     #   Smax = max{S1,S2,S3}
     #   return Smax
