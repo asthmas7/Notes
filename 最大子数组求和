@@ -45,4 +45,37 @@
            #  S3 = Sleft+ Sright
            #  return S3
            
+     #Python 实现（1，-2，4 跨区间 无法保存 sLeft 1+ -2 = -1）
+     
+           A = [1,-2,4,5,-2,8,3,-2,6,3,7,-1]
+
+           def subArray(A,low,high):
+               if len(A)== 1:
+                   return A[0]
+               else:
+                   mid = (low+high)//2
+                   s1 = subArray(A[:mid+1],low,mid)
+                   s2 = subArray(A[mid+1:],mid,high)
+                   s3 = crossArray(A,low,mid,high)
+                   sMax = max(s1,s2,s3)
+
+                   return sMax
+
+           def crossArray(A,low,mid,high):
+               sum = 0
+               sLeft = float('-inf')
+
+               l = low; r = mid;
+               for l in range(mid+1,low):
+                   sum += A[l]
+                   sLeft = max(sLeft,sum)
+               sRight = float('-inf')
+               sum = 0
+               for r in range(mid+1,high+1):
+                   sum += A[r]
+                   sRight = max(sRight,sum)
+               s3 = sLeft + sRight - 
+               return s3
+           print(len(A))
+           subArray(A,0,11)
  
