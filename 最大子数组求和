@@ -45,9 +45,9 @@
            #  S3 = Sleft+ Sright
            #  return S3
            
-     #Python 实现（1，-2，4 跨区间 无法保存 sLeft 1+ -2 = -1）
+     #Python 实现（5，-2，8 low取2 ？）
      
-           A = [1,-2,4,5,-2,8,3,-2,6,3,7,-1]
+          A = [1,-2,4,5,-2,8,3,-2,6,3,7,-1]
 
            def subArray(A,low,high):
                if len(A)== 1:
@@ -66,7 +66,7 @@
                sLeft = float('-inf')
 
                l = low; r = mid;
-               for l in range(mid+1,low):
+               for l in range(mid,low-1,-1):       #必须从mid往左遍历，因为此为跨越区间，必须包含mid和mid+1 两项
                    sum += A[l]
                    sLeft = max(sLeft,sum)
                sRight = float('-inf')
@@ -74,8 +74,9 @@
                for r in range(mid+1,high+1):
                    sum += A[r]
                    sRight = max(sRight,sum)
-               s3 = sLeft + sRight - 
+               s3 = sLeft + sRight
                return s3
+               
+               
            print(len(A))
            subArray(A,0,11)
- 
